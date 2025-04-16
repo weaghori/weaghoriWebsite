@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image" href="./src/assets/images/Aghori_V4_Favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Digital Marketing Agency & Company In Mumbai">
+  <meta property="og:description" content="Aghori Media House is a leading digital marketing agency having professional expertise in branding, marketing, website development services and social media.">
+  <meta property="og:image" content="https://weaghori.com/Aghori-Thumbnail-img.jpg">
+  <meta property="og:url" content="https://weaghori.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Marketing Agency & Company In Mumbai">
+  <meta name="twitter:description" content="Aghori Media House is a leading digital marketing agency having professional expertise in branding, marketing, website development services and social media.">
+  <meta name="twitter:image" content="https://weaghori.com/Aghori-Thumbnail-img.jpg">
+  <meta name="twitter:url" content="https://weaghori.com/">
+  <meta name="description"
+    content="Aghori Media House is a leading digital marketing agency having professional expertise in branding, marketing, website development services and social media." />
+
+  <title>
+    Digital Marketing Agency &amp; Company In Mumbai | Aghori Media House
+  </title>
+</head>
+
+<body class="v-loading bg-black" style="overflow: hidden">
+  <div class="v-preloader" id="preloader">
+    <div class="v-preloader__progress"></div>
+  </div>
+  <div id="video-component"></div>
+  <div class="page" id="page">
+    <header class="header" id="myHeader"></header>
+    <div class="app" id="app" data-v-page="home-page" data-v-pageajax-name="home-page">
+      <!-- <div id="scroll-to-top"></div> -->
+      <div class="custom-scroll home-page" id="custom-scroll">
+        <div class="v-scroll__container">
+            <div class="custom-scroll__outer">
+                <div class="home-page__wrap">
+                    <main class="page-content">
+                        <div id="root" class="upper"></div>
+                    </main>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="canvas-outer beneath bg-black" data-splash-bg-outer><splash-bg></splash-bg></div>
+  <div class="canvas-outer" id="three-js"></div>
+  <script></script>
+  <script>
+    var drawerIcon = document.getElementById("drawer-icon");
+    var drawerMenu = document.getElementById("drawer-menu");
+
+    // Initialize drawerMenu state
+    var isOpen = false;
+
+    console.log("Initial state:", drawerIcon, drawerMenu);
+
+    if (drawerIcon) {
+      drawerIcon.addEventListener("click", function (e) {
+        console.log("Icon clicked", e);
+
+        if (isOpen) {
+          drawerMenu?.style.display = "none"; // Hide the menu
+        } else {
+          drawerMenu?.style.display = "block"; // Show the menu
+        }
+        isOpen = !isOpen;
+      });
+    }
+  </script>
+  <script>const mainElement = document.getElementById("main-container"), closeButton = document.getElementById("closebutton"); closeButton && closeButton.addEventListener("click", (function () { console.log("entered"), mainElement.innerHTML = "" }))</script>
+  <script>var currentPage = window.location.pathname, homePage = document.getElementById("home-page"), element = document.getElementById("myHeader"), scrollPosition = window.scrollY || window.pageYOffset; "/" === currentPage && homePage.style.top</script>
+  
+  <script type="module" src="/src/main.jsx"></script>
+  <!-- <script src="/src/custom_script.js"></script> -->
+</body>
+
+</html>

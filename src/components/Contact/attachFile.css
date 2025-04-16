@@ -1,0 +1,141 @@
+.glow-on-hover {
+    width: max-content;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  
+  .attach-loading-border::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #f0d89c,
+      #9e875b,
+      #bb9446,
+      #383b3d,
+      #ada07f,
+      #a28a5c,
+      #80652e,
+      #735a28,
+      #ffe9b0
+    );
+    position: absolute;
+    background-size: 400%;
+    z-index: -1;
+    width: 110%;
+    height: 70%;
+    animation: rotate 3s linear infinite;
+    border-radius: 100px;
+  }
+  
+  .attach-loading-border::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 98%;
+    height: 94%;
+    left: 1.6px;
+    background: #111;
+    border-radius: 120px;
+    box-shadow: none !important;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* 
+  .glow-on-hover:hover:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 100px;
+  }
+  
+  .glow-on-hover:active {
+    color: #f0e7e7;
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  } */
+  
+  /* .glow-on-hover::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    inset: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 120px;
+    box-shadow: none !important;
+  } 
+  
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 900% 0;
+    }
+  } */
+  
+  .file-attach {
+    white-space: nowrap;
+    overflow: hidden;
+    /* width: 15em; */
+    animation: file 500ms linear;
+    /* animation-delay: 2s; */
+  }
+  @keyframes file {
+    from {
+      /* width: 130px; */
+    }
+  }
+  @keyframes file {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 0;
+      display: visible;
+    }
+    80% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
