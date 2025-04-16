@@ -14,7 +14,7 @@ const ProcessContent = () => {
                 <div
                     className={`${styles.maxContainerWidth}  mx-auto flex flex-col lg:h-[70vh] justify-between`}
                 >
-                    <p className="text-2xl md:text-[24px] lg:text-4xl mb-[35px]">
+                    <p className="text-2xl md:text-[24px] lg:text-4xl mb-[35px] gd-font-size">
                         Our relentless pursuit of excellence and our unwavering commitment
                         to artistic integrity set us apart in the industry. With a seamless
                         fusion of cutting-edge technology and a deep understanding of human

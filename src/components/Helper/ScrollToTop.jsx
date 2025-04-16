@@ -1,68 +1,44 @@
 "use client";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { FaArrowUp } from 'react-icons/fa';
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    console.log('[DEBUG] Mounting ScrollToTop component');
-    
-    const handleScroll = () => {
-      const shouldShow = window.scrollY > 300;
-      console.log(`[DEBUG] Scroll position: ${window.scrollY}, should show: ${shouldShow}`);
-      setIsVisible(shouldShow);
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.scrollY > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener("scroll", toggleVisibility);
+
+        return () => {
+            window.removeEventListener("scroll", toggleVisibility);
+        };
+    }, [])
+
+    const ScrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     };
 
-    // Set initial state
-    handleScroll();
+    return (
+        <div className='fixed bottom-4 animate-pulse right-4'>
+            {isVisible && (
+                <button onClick={ScrollToTop} className='bg-gray-600 text-white rounded-full w-12 h-12
+         flex items-center justify-center focus:outline focus:outline-primary'>
+                    <FaArrowUp />
+                </button>
+            )}
+        </div>
+    )
+}
 
-    // Add event listener
-    window.addEventListener('scroll', handleScroll);
-    console.log('[DEBUG] Scroll listener added');
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      console.log('[DEBUG] Scroll listener removed');
-    };
-  }, []);
-
-  console.log(`[DEBUG] Rendering - isVisible: ${isVisible}`);
-
-  if (!isVisible) return null;
-
-  return (
-    <div style={{
-      position: 'fixed',
-      bottom: '24px',
-      right: '24px',
-      zIndex: 9999,
-      border: '2px solid red', // Debug border
-      backgroundColor: 'rgba(0,0,0,0.5)' // Semi-transparent background
-    }}>
-      <button
-        onClick={() => {
-          console.log('[DEBUG] ScrollToTop clicked');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        style={{
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          background: '#333',
-          color: 'white',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          border: 'none',
-          outline: 'none'
-        }}
-      >
-        <FaArrowUp />
-      </button>
-    </div>
-  );
-};
-
-export default ScrollToTop;
+export default ScrollToTop

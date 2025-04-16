@@ -10,7 +10,7 @@ const DigitalMedia = () => {
             <div
                 className={`${styles.maxWidth} ${styles.paddingX} mx-auto text-white pt-[110px]`}
             >
-                <div className="bg-[#15236c]">
+                <div className="bg-[#15236c] rounded-lg">
                     <img
                         className="max-w-[80%] mx-auto "
                         src={digiMedia}

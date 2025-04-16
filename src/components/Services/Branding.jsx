@@ -16,7 +16,7 @@ const Branding = () => {
             <div
                 className={`${styles.maxWidth} ${styles.paddingX} mx-auto text-white pt-[110px]`}
             >
-                <div className="bg-[#1f1f1f]">
+                <div className="bg-[#1f1f1f] rounded-lg">
                     <img
                         className="max-w-[80%] mx-auto"
                         src={brandig}

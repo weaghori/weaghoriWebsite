@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import Home from './components/Home'
 import Header from './components/Header'
 import OnPageChange from './components/OnPageChange'
-import ScrollToTop from './components/Helper/ScrollToTop'
+// import ScrollToTop from './components/Helper/ScrollToTop'
 import Footer from './components/Footer'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -104,8 +104,7 @@ function App() {
             </Helmet>
             <Header />
             <BrowserRouter>
-            {console.log("App.jsx rendered - ScrollToTop should be mounted")}
-              <ScrollToTop />
+              
               <OnPageChange />
               <Routes>
                 <Route path="/" element={<Home className="home" />} />
@@ -163,6 +162,7 @@ function App() {
               </Routes>
 
               <Footer />
+              {/* <ScrollToTop /> */}
             </BrowserRouter>
           </div>
         </ParallaxProvider>

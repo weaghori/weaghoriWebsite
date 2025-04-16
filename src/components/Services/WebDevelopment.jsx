@@ -12,7 +12,7 @@ const WebDevelopment = () => {
             <div
                 className={`${styles.maxWidth} ${styles.paddingX} mx-auto text-white pt-[110px]`}
             >
-                <div className="bg-[#1cb04e]">
+                <div className="bg-[#1cb04e] rounded-lg">
                     <img
                         className="max-w-[80%] mx-auto"
                         src={webDev}

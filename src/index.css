@@ -851,3 +851,7 @@ body {
     background-color: #fff;
     transition: left 0.3s ease-in-out;
 }
+
+.gd-font-size {
+    line-height: 3rem !important;
+}

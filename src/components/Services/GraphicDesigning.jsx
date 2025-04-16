@@ -49,7 +49,7 @@ const GraphicDesigning = () => {
                 ref={currectContainer}
                 className={`${styles.maxWidth} ${styles.paddingX} mx-auto text-white pt-[110px]`}
             >
-                <div className="bg-[#bf132f]">
+                <div className="bg-[#bf132f] rounded-lg">
                     <img
                         className="max-w-[80%] mx-auto"
                         src={grphicDesign}

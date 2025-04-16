@@ -483,7 +483,7 @@ const ContactSecOne = () => {
                                     <p>Aghori Media House Pvt. Ltd.</p>
                                     <br />
                                     <span className="text-lightText">
-                                        409 Infinity, Ayodhya Chowk, Nr. Gokul Mathura, 150 Ft. Ring
+                                        418 RK Iconic, Nr. Sheetal Park,opp. RK World, 150 Ft. Ring
                                         Rd, Rajkot-360006.
                                     </span>
                                 </p>

@@ -112,18 +112,6 @@ const Footer = () => {
               {/* <MailchimpForm /> */}
             </div>
           </div>
-          <div className='fixed bottom-4 animate-pulse right-4'>            
-            {/* <button onClick={handleReload} className='bg-gray-600 text-white rounded-full w-12 h-12 flex items-center justify-center focus:outline focus:outline-primary'>
-                <FaArrowUp />
-            </button> */}
-            <a href='javascript:void(0)' onClick={handleReload}>
-                <img
-                  src={CursorIMG}
-                  alt="Go To Top"
-                  className="rounded-full w-14 h-14 flex items-center justify-center focus:outline focus:outline-primary"
-                />
-            </a>
-        </div>
         </div>
       </div>
     </>

@@ -25,10 +25,10 @@ const OurServices = () => {
                   flexDirection: "column",
                 }}
               >
-                <li className="text-[2rem] md:text-[40px] lg:text-[5rem]">
+                <li className="text-[1.5rem] md:text-[35px] lg:text-[4rem] uppercase">
                   Graphic Design
                 </li>
-                <li className="text-[2rem] md:text-[40px] lg:text-[5rem]">
+                <li className="text-[1.5rem] md:text-[35px] lg:text-[4rem] uppercase">
                   Branding
                 </li>
                 {/* <li className="text-[24px] lg:text-[40px] 2xl:text-7xl">
@@ -38,10 +38,10 @@ const OurServices = () => {
                 <li className="text-[24px] lg:text-[40px] 2xl:text-7xl">
                   <span className="font-extralight">Social</span> Media Marketing
                 </li> */}
-                <li className="text-[2rem] md:text-[40px] lg:text-[5rem]">
+                <li className="text-[1.5rem] md:text-[35px] lg:text-[4rem] uppercase">
                   Digital Media Marketing
                 </li>
-                <li className="text-[2rem] md:text-[40px] lg:text-[5rem]">
+                <li className="text-[1.5rem] md:text-[35px] lg:text-[4rem] uppercase">
                   Web Development
                 </li>
               </ul>
