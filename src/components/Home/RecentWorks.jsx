@@ -52,32 +52,39 @@ const RecentWorks = () => {
     // Example image component with custom cursor
     const ImageWithCursor = ({ src, alt, title, description, year, link }) => {
         const { cursorRef, cursorStyle, visible, handleMouseMove, handleMouseEnter, handleMouseLeave } = useCursorState();
-
+    
         return (
-            <a href={link}>
-                <div className="max-w-[500px] mx-auto w-full">
-                    <div
-                        className="relative group w-full mx-auto cursor-none overflow-hidden"
-                        onMouseMove={handleMouseMove}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <img src={src} alt={alt} className="w-full h-full group-hover:animate-zoom" />
-                        <img
-                            ref={cursorRef}
-                            src={cursorImage}
-                            alt="Custom Cursor"
-                            style={{ position: 'absolute', left: cursorStyle.left, top: cursorStyle.top }}
-                            className={`pointer-events-none transition-opacity duration-300 ease-in-out overflow-x-hidden ${visible ? 'opacity-100' : 'opacity-0'}`}
-                        />
-                    </div>
-                    <div className="py-4">
-                        <h3 className="text-4xl py-2">{title}</h3>
-                        <h4 className="flex justify-between text-slate-300">
-                            <span className="w-[90%]">{description}</span>
-                            <span className="w-[10%] ml-4 md:ml-0">{year}</span>
-                        </h4>
-                    </div>
+            <a
+                href={link}
+                className="relative block max-w-[500px] mx-auto w-full cursor-none"
+                onMouseMove={handleMouseMove}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                {/* Cursor */}
+                <img
+                    ref={cursorRef}
+                    src={cursorImage}
+                    alt="Custom Cursor"
+                    style={{
+                        position: 'absolute',
+                        left: cursorStyle.left,
+                        top: cursorStyle.top,
+                        zIndex: 50,
+                    }}
+                    className={`pointer-events-none transition-opacity duration-700 ease-in-out ${visible ? 'opacity-100' : 'opacity-0'}`}
+                />
+    
+                {/* Card Content */}
+                <div className="w-full overflow-hidden">
+                    <img src={src} alt={alt} className="w-full h-full group-hover:animate-zoom" />
+                </div>
+                <div className="py-4">
+                    <h3 className="text-4xl py-2">{title}</h3>
+                    <h4 className="flex justify-between text-slate-300">
+                        <span className="w-[90%]">{description}</span>
+                        <span className="w-[10%] ml-4 md:ml-0">{year}</span>
+                    </h4>
                 </div>
             </a>
         );

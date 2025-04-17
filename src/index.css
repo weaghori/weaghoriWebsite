@@ -855,3 +855,13 @@ body {
 .gd-font-size {
     line-height: 3rem !important;
 }
+
+/* Add this to your global CSS or a specific CSS file for smooth transition */
+.custom-cursor-area {
+  position: relative;
+}
+
+.custom-cursor-area:hover {
+  cursor: url("/cursor/Aerrow_Aghori_Testimonials_Client.png") 16 16, auto;
+  transition: all 0.3s ease;
+}
