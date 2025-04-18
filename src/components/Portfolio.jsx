@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Aos from "aos";
 import { motion } from "framer-motion";
 import PortfolioData from "./Portfolio/PortfolioData";
 import { slideIn, staggerContainer } from "../utilities/motion";
 import "aos/dist/aos.css";
-import cursorImage from "../assets/images/CursorArrowWhite.png"; // Adjust path as necessary
+import cursorImage from "../assets/images/CursorArrowWhite.png";
 import "./Portfolio/portfolioHover.css";
 
 const Portfolio = () => {
@@ -16,7 +16,7 @@ const Portfolio = () => {
     navigate(url);
   };
 
-  // AOS Animation Init
+  // Initialize AOS
   useEffect(() => {
     Aos.init({
       duration: 1500,
@@ -25,47 +25,100 @@ const Portfolio = () => {
     });
   }, []);
 
-  // State for hover effect for each item
-  const [hoverStates, setHoverStates] = useState(
-    PortfolioData.map(() => ({
-      visible: false,
-      cursorStyle: { left: 0, top: 0 },
-    }))
-  );
+  // Custom hook for cursor state (same as RecentWorks)
+  const useCursorState = () => {
+    const [visible, setVisible] = useState(false);
+    const [cursorStyle, setCursorStyle] = useState({ left: 0, top: 0 });
+    const cursorRef = useRef(null);
 
-  // Handle mouse movement for a specific image
-  const handleMouseMove = (e, index) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const cursorWidth = 30; // You can set the cursor width dynamically if needed
-    const cursorHeight = 30;
+    const handleMouseMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const cursorSize = 60; // Fixed size to match your design
 
-    // Update the specific image's hover state with the cursor position
-    const newHoverStates = [...hoverStates];
-    newHoverStates[index].cursorStyle = {
-      left: `${e.clientX - rect.left - cursorWidth / 2}px`,
-      top: `${e.clientY - rect.top - cursorHeight / 2}px`,
+      setCursorStyle({
+        left: `${e.clientX - rect.left - cursorSize / 2}px`,
+        top: `${e.clientY - rect.top - cursorSize / 2}px`,
+      });
     };
-    setHoverStates(newHoverStates);
+
+    const handleMouseEnter = () => setVisible(true);
+    const handleMouseLeave = () => setVisible(false);
+
+    return { cursorRef, cursorStyle, visible, handleMouseMove, handleMouseEnter, handleMouseLeave };
   };
 
-  // Handle mouse enter for a specific image
-  const handleMouseEnter = (index) => {
-    const newHoverStates = [...hoverStates];
-    newHoverStates[index].visible = true;
-    setHoverStates(newHoverStates);
-  };
+  // Portfolio card component with custom cursor
+  const PortfolioCard = ({ 
+    id,
+    PortTitle,
+    PortWork,
+    PortDate,
+    PortImg,
+    PortStyle,
+    PortLink,
+    PortHeading
+  }) => {
+    const { cursorRef, cursorStyle, visible, handleMouseMove, handleMouseEnter, handleMouseLeave } = useCursorState();
 
-  // Handle mouse leave for a specific image
-  const handleMouseLeave = (index) => {
-    const newHoverStates = [...hoverStates];
-    newHoverStates[index].visible = false;
-    setHoverStates(newHoverStates);
+    return (
+      <div
+        key={id}
+        className={`w-full block ${PortStyle} promo relative cursor-none`}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Custom cursor */}
+        <img
+          ref={cursorRef}
+          src={cursorImage}
+          alt="Custom Cursor"
+          style={{
+            position: 'absolute',
+            left: cursorStyle.left,
+            top: cursorStyle.top,
+            width: '60px',
+            height: '60px',
+            zIndex: 50,
+            pointerEvents: 'none',
+          }}
+          className={`transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+        />
+
+        <a href={PortLink || `/portfolio/${PortTitle}`}>
+          <div className="w-full md:max-w-[100%] mx-auto">
+            <div className="relative group w-full ml-0 mr-auto overflow-hidden">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ margin: "-140px", once: true }}
+                className="relative group image-wrapper"
+              >
+                <img
+                  src={PortImg}
+                  alt={PortHeading}
+                  className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                />
+              </motion.div>
+            </div>
+
+            <div className="py-4">
+              <h3 className="text-4xl py-2">{PortHeading}</h3>
+              <h4 className="flex justify-between text-slate-300">
+                <span className="w-[90%]">{PortWork}</span>
+                <span className="w-[10%] ml-4 md:ml-0">{PortDate}</span>
+              </h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    );
   };
 
   return (
-    <div className={`max-w-[960px] text-white mx-auto px-6 py-20`}>
+    <div className="max-w-[960px] text-white mx-auto px-6 py-20">
       {/* Heading */}
-      <div
+      <div 
         className="py-12"
         data-aos="fade-down"
         data-aos-delay="900"
@@ -79,83 +132,10 @@ const Portfolio = () => {
       </div>
 
       {/* Portfolio Grid */}
-      <div>
-        <div className="grid md:grid-cols-4 grid-cols-1 text-white gap-x-16 gap-y-10 auto-rows-auto ">
-          {PortfolioData.map(
-            (
-              {
-                id,
-                PortTitle,
-                PortWork,
-                PortDate,
-                PortImg,
-                PortStyle,
-                PortLink,
-                PortHeading,
-              },
-              index
-            ) => (
-              <div
-                key={id}
-                className={`w-full block ${PortStyle} promo`}
-              >
-                <a
-                  // to={PortTitle}
-                  // onClick={(e) => handleRedirect(PortTitle, e)}
-                  href={`/portfolio/${PortTitle}`}
-                >
-                  {/* work card start */}
-                  <div className="w-full md:max-w-[100%] mx-auto">
-                    <div className="relative group w-full ml-0 mr-auto recent_cursor overflow-hidden">
-                      <div>
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          viewport={{ margin: "-140px", once: true }}
-                          className="realtive group image-wrapper cursor-none overflow-hidden"
-                          onMouseMove={(e) => handleMouseMove(e, index)}
-                          onMouseEnter={() => handleMouseEnter(index)}
-                          onMouseLeave={() => handleMouseLeave(index)}
-                        >
-                          <img
-                            src={PortImg}
-                            alt="work-2"
-                            className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:animate-zoom"
-                          />
-                          {/* Custom cursor image */}
-                          {hoverStates[index].visible && (
-                            <img
-                              src={cursorImage}
-                              alt="Custom Cursor"
-                              style={{
-                                position: "absolute",
-                                left: hoverStates[index].cursorStyle.left,
-                                top: hoverStates[index].cursorStyle.top,
-                                pointerEvents: "none",
-                                transition: "opacity 0.3s ease",
-                                opacity: hoverStates[index].visible ? 1 : 0,
-                              }}
-                              className="pointer-events-none"
-                            />
-                          )}
-                        </motion.div>
-                      </div>
-                    </div>
-
-                    <div className="py-4">
-                      <h3 className="text-4xl py-2">{PortHeading}</h3>
-                      <h4 className="flex justify-between text-slate-300">
-                        <span className="w-[90%]">{PortWork}</span>
-                        <span className="w-[10%]  ml-4 md:ml-0">{PortDate}</span>
-                      </h4>
-                    </div>
-                  </div>
-                  {/* work card end */}
-                </a>
-              </div>
-            )
-          )}
-        </div>
+      <div className="grid md:grid-cols-4 grid-cols-1 text-white gap-x-16 gap-y-10 auto-rows-auto">
+        {PortfolioData.map((item) => (
+          <PortfolioCard key={item.id} {...item} />
+        ))}
       </div>
     </div>
   );

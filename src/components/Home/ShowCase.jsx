@@ -91,7 +91,7 @@ const ShowCase = () => {
                     autoPlay
                     loop
                     muted
-                    className={`${styles.maxContainerWidth} absolute z-10`}
+                    className={`${styles.maxContainerWidth} absolute z-10 lg:rounded-3xl  sm:rounded-2xl rounded-md`}
                 />
                 <Marquee
                     pauseOnHover

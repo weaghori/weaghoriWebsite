@@ -100,7 +100,7 @@ const AboutTeamTwo = () => {
             },
           }}
           modules={[Mousewheel, Pagination, Navigation]}
-          className="mySwiper relative group cursor-default group-hover:cursor-custom overflow-hidden"
+          className="mySwiper relative group cursor-default custom-cursor-area overflow-hidden"
         >
           {TeamDataTwo.map(({ id, tname, designation, imgSrc }) => (
             <SwiperSlide key={id}>
