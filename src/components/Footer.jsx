@@ -24,7 +24,7 @@ const Footer = () => {
               </a>
               <a href="/privacy-policy">
                 <p className="hover:text-white text-lightText transition duration-100 pr-5 text-[12px] font-mono">
-                  Privacy Policy
+                  Privacy Policy 
                 </p>
               </a>
               <a href="/terms-and-condition">
